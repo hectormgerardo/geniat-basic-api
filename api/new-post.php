@@ -32,7 +32,7 @@
 			$title = $data->title;
 			$description = $data->description;
 			$user_id = $decoded->data->id;
-			$user_role = $decoded->data->role;
+			$user_role = $decoded->data->role||4;
 
 			$query = "
 				INSERT INTO posts('id','title','description','user', 'date')
