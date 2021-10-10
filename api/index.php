@@ -1,4 +1,4 @@
 <?php
 	echo "howdy!";
-	print_r(getenv());
+	// print_r(getenv());
 ?>
