@@ -1,4 +1,6 @@
 <?php
 	echo "howdy!";
-	// print_r(getenv());
+	echo file_get_contents('./api/docs/geniat-basic-api.postman_collection.json');
+
+
 ?>
