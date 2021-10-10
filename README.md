@@ -3,6 +3,10 @@ RESTful API project for my job application at Ingeniat S.A. de C.V.
 
 ### WORK IN PROGRESS
 
+## BUGS:
+* deleted posts can still be modified.
+* Role system is yet to be implemented.
+
 
 ##	Endpoints
 
@@ -63,10 +67,6 @@ RESTful API project for my job application at Ingeniat S.A. de C.V.
 6. (PUT) UPDATE POST
 	- change post content
 	* ./api/update-post.php?title=the big title&description=description&user_id=1&id=25&date=2020-12-12 12:00:00
-
-BUGS:
-* deleted posts can still be modified.
-* Role system is yet to be implemented.
 
 
 
