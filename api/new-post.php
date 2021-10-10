@@ -36,7 +36,7 @@
 
 			$query = "
 				INSERT INTO posts('id','title','description','user', 'date')
-				VALUES (0,:title, :description, :user_id, 'curdate()');";
+				VALUES (0,:title, :description, :user_id, 0);";
 			
 			$statement = $conn->prepare($query);
 
@@ -54,7 +54,7 @@
 		}
 		catch (Exception $e){
 
-			http_response_code(401);
+			http_response_code(405);
 
 			echo json_encode(array(
 				"message" => "Access denied.",
