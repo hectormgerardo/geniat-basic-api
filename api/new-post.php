@@ -43,6 +43,8 @@
 			$statement->bindParam(':title',$title);
 			$statement->bindParam(':description',$description);
 			$statement->bindParam(':user_id',$user_id);
+
+			echo $query;die;
 			if($statement->execute()){
 				http_response_code(200);
 				echo json_encode(array("MSG" => "post has been created"));
