@@ -1,4 +1,4 @@
 <?php
 	echo "howdy!";
-	echo $_SERVER;
+	var_dump($_SERVER);
 ?>
