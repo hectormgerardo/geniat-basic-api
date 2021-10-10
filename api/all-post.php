@@ -29,9 +29,13 @@
 			$service = new DBService();
 			$conn = $service->getConnection();
 			$data = json_decode(file_get_contents("php://input"));
-			$query = "SELECT * FROM posts";
+			$query = "
+				SELECT p.title, p.title, p.description, p.date ,u.id,u.name,u.surname 
+				FROM posts AS p
+				INNER JOIN users AS u on u.id = p.user;
+				";
 
-			$data_ = $conn->query("SELECT * FROM posts")->fetchAll(PDO::FETCH_ASSOC);
+			$data_ = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
 			$statement = $conn->prepare($query);
 			if($statement->execute()){
