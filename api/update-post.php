@@ -33,18 +33,16 @@
 			$description = $data->description;
 			$user_id = $decoded->data->id;
 			$user_role = $decoded->data->role||4;
-			// $date = $data->date || date('Y-m-d H:i:s');
 
 			$query = "
 				INSERT INTO posts(id,title,description,user, date)
-				VALUES (0,:title, :description, :user_id, CURRENT_TIMESTAMP);";
+				VALUES (0,:title, :description, :user_id, 0);";
 			
 			$statement = $conn->prepare($query);
 
 			$statement->bindParam(':title',$title);
 			$statement->bindParam(':description',$description);
 			$statement->bindParam(':user_id',$user_id);
-			// $statement->bindParam(':date',$date);
 			
 			if($statement->execute()){
 				http_response_code(200);
