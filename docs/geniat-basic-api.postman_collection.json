@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "79dda926-092e-4056-ba0a-4a072b988648",
+		"name": "geniat-basic-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "NEW USER",
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"john\",\n\t\"surname\": \"doe\",\n\t\"email\": \"john@doe.com\",\n\t\"pass\": \"superpassword\",\n\t\"role\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/new-user.php",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"new-user.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEW POST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUSEVfSVNTVUVSIiwiYXVkIjoiVEhFX0FVRElFTkNFIiwiaWF0IjoxNjMzODkwMDYyLCJuYmYiOjE2MzM4OTAwNzIsImV4cCI6MTYzMzg5MzY2MiwiZGF0YSI6eyJpZCI6IjUiLCJuYW1lIjoiam9obiIsInN1cm5hbWUiOiJkb2UiLCJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInJvbGUiOm51bGx9fQ.5ZVnQ29zkkbkNsGPMIDdXcgVG5MtJ9gSlEPEFr6UZiM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"supertítutlo\",\n\t\"description\": \"testito\",\n    \"date\": \"0000-00-00 00:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/new-post.php",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"new-post.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"john@doe.com\",\n\t\"pass\": \"superpassword\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/login.php",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL POST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUSEVfSVNTVUVSIiwiYXVkIjoiVEhFX0FVRElFTkNFIiwiaWF0IjoxNjMzODk4MTM1LCJuYmYiOjE2MzM4OTgxNDUsImV4cCI6MTYzMzkwMTczNSwiZGF0YSI6eyJpZCI6IjUiLCJuYW1lIjoiam9obiIsInN1cm5hbWUiOiJkb2UiLCJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInJvbGUiOm51bGx9fQ.FRZtQstduYi2vCUO7jqgKaXrNql4MHPZHS2sdo5HHlc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/all-post.php",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"all-post.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE POST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUSEVfSVNTVUVSIiwiYXVkIjoiVEhFX0FVRElFTkNFIiwiaWF0IjoxNjMzODk4MTM1LCJuYmYiOjE2MzM4OTgxNDUsImV4cCI6MTYzMzkwMTczNSwiZGF0YSI6eyJpZCI6IjUiLCJuYW1lIjoiam9obiIsInN1cm5hbWUiOiJkb2UiLCJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInJvbGUiOm51bGx9fQ.FRZtQstduYi2vCUO7jqgKaXrNql4MHPZHS2sdo5HHlc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/delete-post.php?id=25&destroy=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"delete-post.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "25"
+						},
+						{
+							"key": "destroy",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE POST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUSEVfSVNTVUVSIiwiYXVkIjoiVEhFX0FVRElFTkNFIiwiaWF0IjoxNjMzOTAxNzU2LCJuYmYiOjE2MzM5MDE3NjYsImV4cCI6MTYzMzkwNTM1NiwiZGF0YSI6eyJpZCI6IjUiLCJuYW1lIjoiam9obiIsInN1cm5hbWUiOiJkb2UiLCJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsInJvbGUiOm51bGx9fQ.Bvq0FL_hrdN_8oRNQyeqv5Dl5lqWALSbnvl6AxnaZpE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/update-post.php?title=ajúa&description=description&user_id=1&id=25&date=2020-12-12 12:00:00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"update-post.php"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "ajúa"
+						},
+						{
+							"key": "description",
+							"value": "description"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "id",
+							"value": "25"
+						},
+						{
+							"key": "date",
+							"value": "2020-12-12 12:00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
