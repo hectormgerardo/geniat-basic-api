@@ -1,9 +1,9 @@
 <?php
 	class DBService{
 		$db_host = getenv('HOST') || 'localhost';
-		$db_name = getenv('NAME') || 'ingeniatdb';
-		$db_user = getenv('USER') || 'root';
-		$db_pass = getenv('PASS') || '';
+		$db_name = getenv('NAME') || 'heroku_f0c953e58cdf1ba';
+		$db_user = getenv('USER') || 'b1a8870ee03ea9';
+		$db_pass = getenv('PASS') || '75fe4413';
 		$lang = getenv('LANG') || 'es';
 		private $conn;
 
