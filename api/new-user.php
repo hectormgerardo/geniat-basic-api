@@ -33,7 +33,7 @@
 	$statement->bindParam(':name',$name);
 	$statement->bindParam(':surname',$surname);
 	$statement->bindParam(':email',$email);
-	$hashed_pass = password_hash($password, PASSWORD_DEFAULT)
+	$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
 	$statement->bindParam(':pass',$hashed_pass);
 	$statement->bindParam(':role',$role);
 
