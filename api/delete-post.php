@@ -5,7 +5,7 @@
 
 	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/json; charset=UTF-8");
-	header("Access-Control-Allow-Methods: POST");
+	header("Access-Control-Allow-Methods: DELETE");
 	header("Access-Control-Max-Age: 3600");
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 	
@@ -29,31 +29,43 @@
 			$service = new DBService();
 			$conn = $service->getConnection();
 			$data = json_decode(file_get_contents("php://input"));
-			$title = $data->title;
-			$description = $data->description;
-			$user_id = $decoded->data->id;
-			$user_role = $decoded->data->role||4;
-			// $date = $data->date || date('Y-m-d H:i:s');
-
-			$query = "
-				INSERT INTO posts(id,title,description,user, date)
-				VALUES (0,:title, :description, :user_id, CURRENT_TIMESTAMP);";
-			
-			$statement = $conn->prepare($query);
-
-			$statement->bindParam(':title',$title);
-			$statement->bindParam(':description',$description);
-			$statement->bindParam(':user_id',$user_id);
-			// $statement->bindParam(':date',$date);
-			
-			if($statement->execute()){
+			$id = $_GET['id'];
+			$destroy = $_GET['destroy'];
+			$user_role = $decoded->data->role;
+			if($destroy==0){$destroy='false';}
+			if($destroy==1){$destroy='true';}
+			if($destroy=='true'){
+				$query = "DELETE FROM posts WHERE id = :id;";
+				$statement = $conn->prepare($query);
+				$statement->bindParam(':id',$id);
+				if($statement->execute()){
 				http_response_code(200);
-				echo json_encode(array("MSG" => "post has been created"));
+				echo json_encode(array("MSG" => "post has been destroyed"));
+				}
+				else{
+					http_response_code(403);
+					echo json_encode(array("MSG" => "error, failed destruction"));
+				}
 			}
 			else{
-				http_response_code(403);
-				echo json_encode(array("MSG" => "error, failed post creation"));
+				$query = "
+					UPDATE posts
+					SET deleted = 1
+					WHERE id = :id;";
+				$statement = $conn->prepare($query);
+				$statement->bindParam(':id',$id);
+				if($statement->execute()){
+					http_response_code(200);
+					echo json_encode(array("MSG" => "post has been deleted"));
+				}
+				else{
+					http_response_code(403);
+					echo json_encode(array("MSG" => "error, failed post deletion"));
+				}
 			}
+			
+
+			
 		}
 		catch (Exception $e){
 

@@ -5,7 +5,7 @@
 
 	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/json; charset=UTF-8");
-	header("Access-Control-Allow-Methods: POST");
+	header("Access-Control-Allow-Methods: GET");
 	header("Access-Control-Max-Age: 3600");
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 	
@@ -29,26 +29,18 @@
 			$service = new DBService();
 			$conn = $service->getConnection();
 			$data = json_decode(file_get_contents("php://input"));
-			$title = $data->title;
-			$description = $data->description;
-			$user_id = $decoded->data->id;
-			$user_role = $decoded->data->role||4;
-			// $date = $data->date || date('Y-m-d H:i:s');
-
 			$query = "
-				INSERT INTO posts(id,title,description,user, date)
-				VALUES (0,:title, :description, :user_id, CURRENT_TIMESTAMP);";
-			
-			$statement = $conn->prepare($query);
+				SELECT p.title, p.title, p.description, p.date ,u.id,u.name,u.surname 
+				FROM posts AS p
+				INNER JOIN users AS u on u.id = p.user;
+				";
 
-			$statement->bindParam(':title',$title);
-			$statement->bindParam(':description',$description);
-			$statement->bindParam(':user_id',$user_id);
-			// $statement->bindParam(':date',$date);
-			
+			$data_ = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+			$statement = $conn->prepare($query);
 			if($statement->execute()){
 				http_response_code(200);
-				echo json_encode(array("MSG" => "post has been created"));
+				echo json_encode($data_);
 			}
 			else{
 				http_response_code(403);
