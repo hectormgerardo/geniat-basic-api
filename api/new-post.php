@@ -1,8 +1,8 @@
 <?php
-	include_once './cfg/database.php';
+	include_once './cfg/db.php';
 
 	$title = '';
-	$desc = '';
+	$description = '';
 	$user_id = '';
 	$conn = null;
 
@@ -10,19 +10,14 @@
 	$conn = $service->getConnection();
 
 	$data = json_decode(file_get_contents("php://input"));
-	$name = $data->name;
-	$surname = $data->surname;
-	$email = $data->email;
-	$pass = $data->password;
-	$role = $data->role;
+	$title = $data->title;
+	$description = $data->description;
+	$user_id = $data->user || '1';
 
 	$query = "
 		INSERT INTO users 
 		SET
-			name = :name,
-			surname = :surname,
-			email = :email,
-			pass = :pass,
+			title
 			";
 	
 	$statement = $conn->prepare($query);
