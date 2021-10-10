@@ -1,4 +1,4 @@
 <?php
-	echo "howdy!"
+	echo "howdy!";
 	echo $_SERVER;
 ?>
