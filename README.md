@@ -79,9 +79,9 @@ RESTful API project for my job application at Ingeniat S.A. de C.V.
 
 ## DEPLOYS
 
-[http://geniat-basic-api.herokuapp.com/api/]
+(http://geniat-basic-api.herokuapp.com/api/)
 
 
 ## POSTMAN REQUEST COLLECTION
 
-[http://geniat-basic-api.herokuapp.com/api/docs/geniat-basic-api.postman_collection.json] 
+[postman json](http://geniat-basic-api.herokuapp.com/api/docs/geniat-basic-api.postman_collection.json])
