@@ -1,5 +1,5 @@
 <?php
-	include_once './cfg/database.php';
+	include_once './cfg/db.php';
 
 	$name = '';
 	$surname = '';
