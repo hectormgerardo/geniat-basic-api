@@ -35,7 +35,7 @@
 			$user_role = $decoded->data->role||4;
 
 			$query = "
-				INSERT INTO posts('id','title','description','user', 'date')
+				INSERT INTO posts(id,title,description,user, date)
 				VALUES (0,:title, :description, :user_id, 0);";
 			
 			$statement = $conn->prepare($query);
@@ -44,7 +44,7 @@
 			$statement->bindParam(':description',$description);
 			$statement->bindParam(':user_id',$user_id);
 
-			echo $query;die;
+			// echo $query;die;
 			if($statement->execute()){
 				http_response_code(200);
 				echo json_encode(array("MSG" => "post has been created"));
