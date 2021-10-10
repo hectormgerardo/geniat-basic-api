@@ -5,13 +5,18 @@
 		// private $user = 'root';
 		// private $pass = 'SCHAFFHAUSEN';
 		
-		private $host = $_SERVER['DB_HOST'];
-		private $name = $_SERVER['DB_NAME'];
-		private $user = $_SERVER['DB_USER'];
-		private $pass = $_SERVER['DB_PASS'];
+		private $host;
+		private $name;
+		private $user;
+		private $pass;
 		private $conn;
 
 		public function getConnection(){
+			$host = getenv('DB_HOST');
+			$name = getenv('DB_NAME');
+			$user = getenv('DB_USER');
+			$pass = getenv('DB_PASS');
+
 			$this->conn = null;
 
 			try{
