@@ -1,4 +1,4 @@
 <?php
 	echo "howdy!";
-	var_dump($_SERVER);
+	print_r(getenv());
 ?>
